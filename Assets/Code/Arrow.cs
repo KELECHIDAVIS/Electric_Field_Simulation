@@ -12,8 +12,8 @@ public class Arrow : MonoBehaviour
 {
     const int MIN_DISTANCE = 1;  // the minimum distance that a particle has to be away to be accounted for in calc ; This is used to avoid infinite bugs and the such
 
-    public float maxAlpha = .6f, minAlpha = 0f; 
-    public float minDist = .5f, maxDist =  10;
+    public float maxAlpha = .8f, minAlpha = 0f; 
+    public float minDist = 7f, maxDist =  14f;
 
 
     public void Start()
@@ -81,10 +81,18 @@ public class Arrow : MonoBehaviour
             }
             else
             {
-                float fraction = ( dist - minDist ) / (maxDist - minDist);
-                float val = Mathf.Lerp(maxAlpha, minAlpha, fraction); 
 
-                GetComponent<SpriteRenderer>().color = new Color( val , val ,val , val );
+                Debug.Log("Distance: " + dist); 
+
+                float fraction = (dist - minDist) / (maxDist - minDist);
+
+                float val = Mathf.Lerp(maxAlpha, minAlpha, fraction);
+
+                if (GetComponent<SpriteRenderer>().color.a < val)
+                {
+                    GetComponent<SpriteRenderer>().color = new Color(val, val, val, val);
+                }
+
             }
 
             netElectricField += contribution;
