@@ -33,28 +33,36 @@ public class MainProgram : MonoBehaviour
     void Update()
     {
         // only update arrow rotation if a particle moves 
-        if(Input.GetMouseButtonDown(0) )
+        if(Input.GetKeyDown(KeyCode.N) )
         {
            
             // spawn a neg 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
             mousePos.z = 10f;
 
-            particleList.Add( Instantiate(negPrefab, mousePos, Quaternion.identity));
+            GameObject newParticle = Instantiate(negPrefab, mousePos, Quaternion.identity);
+            newParticle.GetComponent<Draggable>().arrows = arrowList; 
+            newParticle.GetComponent<Draggable>().particles = particleList;
+            newParticle.GetComponent<Draggable>().row = rows;
+            newParticle.GetComponent<Draggable>().col = cols ;
+            particleList.Add( newParticle);
 
             
             updateVectorField(); 
         }
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKeyDown(KeyCode.P))
         {
 
             // spawn a neg 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 10f;
 
-            particleList.Add(Instantiate(posPrefab, mousePos, Quaternion.identity));
-
-            
+            GameObject newParticle = Instantiate(negPrefab, mousePos, Quaternion.identity);
+            newParticle.GetComponent<Draggable>().arrows = arrowList;
+            newParticle.GetComponent<Draggable>().particles = particleList;
+            newParticle.GetComponent<Draggable>().row = rows;
+            newParticle.GetComponent<Draggable>().col = cols;
+            particleList.Add(newParticle);
 
             updateVectorField();
         }

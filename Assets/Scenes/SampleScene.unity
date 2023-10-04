@@ -250,9 +250,9 @@ MonoBehaviour:
   neutPrefab: {fileID: 3096046147678380191, guid: e4bf1469016fc084584ffd35d0a8f996, type: 3}
   xStart: -11
   yStart: 4.5
-  cols: 12
+  cols: 16
   rows: 10
-  xSpace: 2
+  xSpace: 1.5
   ySpace: 1
   testArrow: {fileID: 0}
 --- !u!4 &1154387940
