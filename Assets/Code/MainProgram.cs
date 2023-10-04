@@ -57,7 +57,7 @@ public class MainProgram : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 10f;
 
-            GameObject newParticle = Instantiate(negPrefab, mousePos, Quaternion.identity);
+            GameObject newParticle = Instantiate(posPrefab, mousePos, Quaternion.identity);
             newParticle.GetComponent<Draggable>().arrows = arrowList;
             newParticle.GetComponent<Draggable>().particles = particleList;
             newParticle.GetComponent<Draggable>().row = rows;
@@ -69,6 +69,10 @@ public class MainProgram : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             deleteParticles(); 
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit(); 
         }
 
 
